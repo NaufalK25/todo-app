@@ -1,0 +1,16 @@
+# NodeJS
+/node_modules
+/dist
+
+# Environment variables
+.env
+
+# Config and Linter Files
+.editorconfig
+.ejsbrc.json
+
+# Visual Studio Code
+.vscode
+
+# Miscellaneous
+/temp
