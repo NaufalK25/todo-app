@@ -1,3 +1,27 @@
 <main class="flex-1">
-    <p>Todo App</p>
+    <section class="flex items-center flex-col">
+        <p>Todo App</p>
+        <form action="/" method="POST" class="flex flex-col">
+            <section class="flex flex-row">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" autofocus required>
+            </section>
+            <section class="flex flex-row">
+                <label for="description">Description:</label>
+                <input type="text" name="description" id="description" required>
+            </section>
+            <section class="flex flex-row">
+                <label>Completed:</label>
+                <section>
+                    <label>Yes</label>
+                    <input type="radio" name="completed" value="true" required>
+                </section>
+                <section>
+                    <label>No</label>
+                    <input type="radio" name="completed" value="false" required>
+                </section>
+            </section>
+            <button type="submit">Add</button>
+        </form>
+    </section>
 </main>

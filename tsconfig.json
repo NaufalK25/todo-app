@@ -5,8 +5,8 @@
             "es2021",
             "dom"
         ],
-        "module": "commonjs",
-        "target": "es2021",
+        "module": "Commonjs",
+        "target": "es2022",
         "types": [
             "node"
         ],
@@ -17,6 +17,8 @@
         "forceConsistentCasingInFileNames": true,
         "outDir": "./dist",
         "importHelpers": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
     },
     "exclude": [
         "node_modules",
