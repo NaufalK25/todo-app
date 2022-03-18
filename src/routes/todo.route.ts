@@ -1,11 +1,10 @@
 import { Express } from 'express';
-import { getTodos, postTodo } from '../controllers/todo.controller';
-import { err404 } from '../routes/error.route';
+import { deleteTodo, getTodos, postTodo } from '../controllers/todo.controller';
 
 export const todoRoutes = (app: Express) => {
-    app
-        .route('/')
+    app.route('/')
         .get(getTodos)
         .post(postTodo);
-    app.use('*', err404);
+    app.route('/:todoId/delete')
+    .get(deleteTodo);
 };
