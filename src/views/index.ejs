@@ -1,26 +1,41 @@
 <main class="flex-1 mt-5 flex gap-y-5 flex-col items-center">
     <section class="flex justify-center items-center flex-col gap-y-5">
-        <a class="bg-black text-white hover:bg-slate-800 rounded-md cursor-pointer w-fit p-2 shadow-md" id="add-todo-button" title="Add New Todo">Add New Todo</a>
+        <button class="bg-black text-white hover:bg-slate-800 rounded-md cursor-pointer w-fit p-2 shadow-md" id="add-todo-button" title="Add New Todo">Add New Todo</button>
+        <% if (flash.message.length !== 0) { %>
+        <section class="rounded-md p-2 flex gap-x-1 cursor-pointer shadow-md" id="flash-message" data-flashtype="<%= flash.type %>">
+            <%- flash.svg %>
+            <p class="text-white"><%= flash.message %></p>
+        </section>
+        <% } %>
         <%- include('includes/add-todo-modal.ejs') %>
     </section>
     <section class="flex flex-col justify-center gap-y-5">
         <% for (const todo of todos) { %>
-        <%
-            let todoTitle = todo.title;
-            if (todo.completed) {
-                todoTitle += ' - Completed';
-            }
-        %>
-        <section class="border border-black rounded-md shadow-md p-5 flex items-center justify-between relative">
-            <p class="<%= (todo.completed) ? 'line-through' : '' %>" title="<%= todoTitle %>"><%= todo.title %></p>
-            <form action="/<%= todo.id %>/delete" method="GET">
-                <button type="submit" title="Delete <%= todo.title %>">
-                    <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#f44336">
-                        <path d="M0 0h24v24H0V0z" fill="none" />
-                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z" />
-                    </svg>
-                </button>
-            </form>
+        <section class="border border-black rounded-md shadow-md p-2 flex items-center gap-x-5" title="<%= todo.description %>">
+            <p class="<%= (todo.completed) ? 'line-through' : '' %> w-1/2"><%= todo.title %></p>
+            <section class="flex flex-col w-1/2 items-end gap-y-5">
+                <form action="/?_method=PUT" method="POST">
+                    <input type="hidden" name="todoId" value="<%= todo.id %>">
+                    <input type="hidden" name="todoTitle" value="<%= todo.title %>">
+                    <input type="hidden" name="todoCompleted" value="<%= todo.completed %>">
+                    <button type="submit" title="Update <%= todo.title %>">
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#f1c40f">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
+                        </svg>
+                    </button>
+                </form>
+                <form action="/?_method=DELETE" method="POST">
+                    <button type="submit" title="Delete <%= todo.title %>">
+                        <input type="hidden" name="todoId" value="<%= todo.id %>">
+                        <input type="hidden" name="todoTitle" value="<%= todo.title %>">
+                        <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#e74c3c">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z" />
+                        </svg>
+                    </button>
+                </form>
+            </section>
         </section>
         <% } %>
     </section>

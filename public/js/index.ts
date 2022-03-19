@@ -1,10 +1,11 @@
+// Add Todo Modal
 const addTodoModal = <HTMLElement>document.querySelector('section#add-todo-modal');
 
 // Show Add Todo Modal
-const addTodoButton = <HTMLAnchorElement>document.querySelector('a#add-todo-button');
+const addTodoButton = <HTMLButtonElement>document.querySelector('button#add-todo-button');
 
 addTodoButton.addEventListener('click', () => {
-    addTodoModal.classList.remove(...['hidden']);
+    addTodoModal.classList.remove('hidden');
 });
 
 // Close Add Todo Modal
@@ -14,13 +15,35 @@ closeModal?.addEventListener('click', () => {
     addTodoModal.classList.add('hidden');
 });
 
-// Close Flash Message
+// Flash Message
 const flashMessage = <HTMLElement>document.querySelector('section#flash-message');
 
+// Change Flash Message Color Depending on Type
+const flashType = flashMessage?.dataset.flashtype;
+
+window.addEventListener('load', {
+    handleEvent: () => {
+        switch (flashType) {
+            case 'add':
+                flashMessage?.classList.add('bg-[#07bc0c]');
+                break;
+            case 'update':
+                flashMessage?.classList.add('bg-[#f1c40f]');
+                break;
+            case 'delete':
+                flashMessage?.classList.add('bg-[#e74c3c]');
+                break;
+            default:
+                break;
+        }
+    },
+});
+
+// Close Flash Message
 flashMessage?.addEventListener('click', () => {
-    flashMessage.classList.add('hidden');
+    flashMessage?.remove();
 });
 
 setTimeout(() => {
-    flashMessage.classList.add('hidden');
-}, 2000);
+    flashMessage?.remove();
+}, 3000);

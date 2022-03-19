@@ -1,9 +1,13 @@
+import flash from 'connect-flash';
+import cookie from 'cookie-parser';
 import express from 'express';
 import expressLayouts from 'express-ejs-layouts';
+import session from 'express-session';
+import methodOverride from 'method-override';
 import morgan from 'morgan';
 import { baseUrl, port } from './src/config/constants';
-import { todoRoutes } from './src/routes/todo.route';
 import { err404 } from './src/routes/error.route';
+import { todoRoutes } from './src/routes/todo.route';
 
 const app = express();
 
@@ -12,6 +16,15 @@ app.use(morgan('dev'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
+app.use(methodOverride('_method'));
+app.use(cookie('secret'));
+app.use(session({
+    cookie: { maxAge: 60000,},
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+}));
+app.use(flash());
 // Express Middlewares
 app.use(express.static('public'));
 app.use(express.static('dist/public'));

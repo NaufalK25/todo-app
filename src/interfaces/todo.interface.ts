@@ -5,6 +5,8 @@ export interface TodoAttributes {
     title: string;
     description: string;
     completed: boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export interface TodoInstance extends Model<TodoAttributes>, TodoAttributes { }
