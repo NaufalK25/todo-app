@@ -24,13 +24,13 @@ const flashType = flashMessage?.dataset.flashtype;
 window.addEventListener('load', {
     handleEvent: () => {
         switch (flashType) {
-            case 'add':
+            case 'success':
                 flashMessage?.classList.add('bg-[#07bc0c]');
                 break;
-            case 'update':
+            case 'warning':
                 flashMessage?.classList.add('bg-[#f1c40f]');
                 break;
-            case 'delete':
+            case 'error':
                 flashMessage?.classList.add('bg-[#e74c3c]');
                 break;
             default:

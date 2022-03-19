@@ -3,12 +3,12 @@
         "lib": [
             "es2020",
             "es2021",
-            "dom"
+            "dom",
         ],
         "module": "Commonjs",
         "target": "es2022",
         "types": [
-            "node"
+            "node",
         ],
         "moduleResolution": "node",
         "strict": true,
@@ -19,10 +19,14 @@
         "importHelpers": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "src/types",
+        ],
     },
     "exclude": [
         "node_modules",
         "**/*.spec.ts",
         "**/*.d.ts",
-    ]
+    ],
 }

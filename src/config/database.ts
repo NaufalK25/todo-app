@@ -3,7 +3,7 @@ import { Sequelize } from 'sequelize';
 
 dotenv.config();
 
-export const sequelize = new Sequelize(
+const sequelize = new Sequelize(
     process.env.DB_NAME || 'todo-app',
     process.env.DB_USER || 'postgres',
     process.env.DB_PASS,
@@ -27,3 +27,5 @@ sequelize
     .catch(err => {
         console.error(`Unable to connect to the database: ${err.message}`);
     });
+
+export default sequelize;

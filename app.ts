@@ -6,8 +6,7 @@ import session from 'express-session';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
 import { baseUrl, port } from './src/config/constants';
-import { err404 } from './src/routes/error.route';
-import { todoRoutes } from './src/routes/todo.route';
+import todoRoutes from './src/routes/todo.route';
 
 const app = express();
 
@@ -35,7 +34,9 @@ require('./src/config/database');
 
 // Routes
 todoRoutes(app);
-app.use('*', err404);
+app.use('*', (req, res) => {
+    res.status(404).send('404 Not Found!');
+});
 
 // Start server
 app.listen(port, () => {

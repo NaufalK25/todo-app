@@ -1,5 +1,11 @@
-// add id as optional parameter
 import { Model } from 'sequelize';
+
+type FlashMessageOption = {
+    message: string;
+    type: string;
+    svg: string;
+}
+
 export interface TodoAttributes {
     id?: number;
     title: string;
@@ -10,3 +16,5 @@ export interface TodoAttributes {
 }
 
 export interface TodoInstance extends Model<TodoAttributes>, TodoAttributes { }
+
+export default FlashMessageOption;

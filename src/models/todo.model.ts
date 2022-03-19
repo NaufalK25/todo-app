@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/database';
-import { TodoAttributes, TodoInstance } from '../interfaces/todo.interface';
+import sequelize from '../config/database';
+import { TodoAttributes, TodoInstance } from '../types/todo';
 
-export const Todo = sequelize.define<TodoInstance, TodoAttributes>('todo', {
+const Todo = sequelize.define<TodoInstance, TodoAttributes>('todo', {
     title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -17,3 +17,5 @@ export const Todo = sequelize.define<TodoInstance, TodoAttributes>('todo', {
         defaultValue: false,
     },
 });
+
+export default Todo;
