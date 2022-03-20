@@ -3,21 +3,13 @@ import { Sequelize } from 'sequelize';
 
 dotenv.config();
 
-const sequelize = new Sequelize(
-    process.env.DB_NAME || 'todo-app',
-    process.env.DB_USER || 'postgres',
-    process.env.DB_PASS,
-    {
-        host: process.env.DB_HOST || 'localhost',
-        dialect: 'postgres',
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000,
-        },
-    }
-);
+const port = 5432,
+    host = process.env.DB_HOST || 'localhost',
+    username = process.env.DB_USER || 'postgres',
+    password = process.env.DB_PASS || 'postgres',
+    database = process.env.DB_NAME || 'todos';
+
+const sequelize = new Sequelize(`postgres://${username}:${password}@${host}:${port}/${database}`);
 
 sequelize
     .authenticate()
