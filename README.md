@@ -17,12 +17,8 @@ Simple Todo App that use CRUD concept build with `Node.js` along with `TypeScrip
     ```
     psql --version
     ```
-4. [Heroku](https://devcenter.heroku.com/articles/heroku-cli)
-    ```
-    heroku --version
-    ```
 
-### How to run
+### How To Run In Local
 
 1. Clone the repository
     ```
