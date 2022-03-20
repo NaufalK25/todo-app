@@ -1,8 +1,8 @@
-<section class="hidden w-fit border border-black rounded-md p-5 shadow-md relative" id="add-todo-modal">
-    <h1 class="text-left font-bold text-xl border border-black border-b-2 border-t-0 border-x-0">Add New Todo</h1>
+<section class="hidden w-fit border border-orange-500 rounded-md p-5 shadow-md relative" id="add-todo-modal">
+    <h1 class="text-left font-bold text-xl border border-orange-500 border-b-2 border-t-0 border-x-0">Add New Todo</h1>
     <form action="/" method="POST" class="flex flex-col justify-center">
         <p class="absolute top-2 right-2 cursor-pointer" title="Close">
-            <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#f44336" id="close-modal">
+            <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#ef4444" id="close-modal">
                 <path d="M0 0h24v24H0V0z" fill="none" />
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
             </svg>
@@ -10,7 +10,7 @@
         <section class="flex flex-col lg:flex-row items-center gap-x-5">
             <section class="flex flex-col items-center p-2">
                 <label for="title" class="cursor-pointer h-1/2 font-bold">Title</label>
-                <input type="text" name="title" id="title" class="h-1/2 border border-black rounded-md p-1" autofocus required>
+                <input type="text" name="title" id="title" class="h-1/2 border border-black rounded-md p-1" required>
             </section>
             <section class="flex flex-col items-center p-2">
                 <label for="description" class="cursor-pointer h-1/2 font-bold">Description</label>
@@ -30,7 +30,7 @@
                 </section>
             </section>
             <button type="submit" title="Add" class="absolute bottom-2 right-2">
-                <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#07bc0c">
+                <svg height="24px" viewBox="0 0 24 24" width="24px" fill="#22c55e">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
                 </svg>

@@ -6,6 +6,8 @@ const addTodoButton = <HTMLButtonElement>document.querySelector('button#add-todo
 
 addTodoButton.addEventListener('click', () => {
     addTodoModal.classList.remove('hidden');
+    const inputTitle = <HTMLInputElement>document.querySelector('input#title');
+    inputTitle.focus();
 });
 
 // Close Add Todo Modal
@@ -13,6 +15,27 @@ const closeModal = <SVGSVGElement>document.querySelector('svg#close-modal');
 
 closeModal?.addEventListener('click', () => {
     addTodoModal.classList.add('hidden');
+});
+
+// Show Todo Description
+const todos: NodeListOf<HTMLElement> = document.querySelectorAll('section.todo-container');
+const todosDesc: NodeListOf<HTMLParagraphElement> = document.querySelectorAll('p.todo-desc');
+
+todos?.forEach(todo => {
+    const todoContainerId = todo.id.replace('todo-container-', '');
+    todosDesc?.forEach(todoDesc => {
+        const todoDescId = todoDesc.id.replace('todo-desc-', '');
+        if (todoContainerId === todoDescId) {
+            todo?.addEventListener('mouseover', () => {
+                todoDesc?.classList.remove('hidden');
+            });
+            todo?.addEventListener('mouseout', () => {
+                todoDesc?.classList.add('hidden');
+            });
+        } else {
+            todoDesc?.classList.add('hidden');
+        }
+    });
 });
 
 // Flash Message
@@ -25,13 +48,13 @@ window.addEventListener('load', {
     handleEvent: () => {
         switch (flashType) {
             case 'success':
-                flashMessage?.classList.add('bg-[#07bc0c]');
+                flashMessage?.classList.add('bg-green-500');
                 break;
             case 'warning':
-                flashMessage?.classList.add('bg-[#f1c40f]');
+                flashMessage?.classList.add('bg-yellow-500');
                 break;
             case 'error':
-                flashMessage?.classList.add('bg-[#e74c3c]');
+                flashMessage?.classList.add('bg-red-500');
                 break;
             default:
                 break;
