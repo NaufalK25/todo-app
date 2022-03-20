@@ -2,7 +2,7 @@
 
 Simple Todo App that use CRUD concept build with `Node.js` along with `TypeScript` also `PostgreSQL` and `Sequelize` as the database and ORM. I build this website so I can learn how to connect SQL database with `Node.js` application using `Sequelize` ORM.
 
-### PREREQUISITES
+### Prerequisites
 
 1. [Node.js](https://nodejs.org/en/)
     ```
@@ -22,7 +22,7 @@ Simple Todo App that use CRUD concept build with `Node.js` along with `TypeScrip
     heroku --version
     ```
 
-### HOW TO RUN IN DEVELOPMENT
+### How to run
 
 1. Clone the repository
     ```
@@ -41,7 +41,7 @@ Simple Todo App that use CRUD concept build with `Node.js` along with `TypeScrip
     npm run dev
     ```
 
-### CREDITS
+### Credits
 
 -   [Google Icon](https://fonts.google.com/icons)
 
